@@ -1,0 +1,205 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    font-size: 62.5%;
+}
+
+
+$background: #040924;
+$background-container: #ffffff;
+
+$font-main :'Roboto', sans-serif;
+
+$tt-heading : #0C3440;
+$tt-label : #00453A;
+
+$tt-input:#212529;
+$ot-input: #02799D;
+$bd-input: rgba(73, 80, 87, 0.30);
+$tt-placeholder: rgba(73, 80, 87, 0.50);
+$bg-input: #DCE2E9;
+
+$tt-button: #fff;
+$bg-button: #02799D;
+$bg-button-hover: #015670;
+
+$bg-error : #F03E3E;
+$tt-error: #fff;
+
+body{
+    background: $background;
+    
+    font-family: $font-main;
+}
+
+body,input, button{
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+
+@mixin card-modal{
+    padding: 4.8rem 6.4rem 6.4rem;
+    background: $background-container;
+    max-width: 42.8rem;
+    margin-inline: auto;
+    border-radius: 0.6rem;
+    box-shadow: 0px .2rem .4rem 0px rgba(0, 0, 0, 0.10);
+}
+
+.alert-error.open{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.alert-error{
+    // width: 100%;
+    position: absolute;
+    background-color: $bg-error;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: $tt-error;
+    padding: .8rem 0;
+    font-weight: bold;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-30px);
+    transition: transform 0.3s;
+}
+
+.container{
+    height: 100vh;
+    display: grid;
+    // place-items: center;
+    place-content: center;
+
+    .card{
+        @include card-modal();
+        form{
+            width: 30rem;
+
+            h1{
+                margin-bottom: 3.2rem;
+    
+                .title{
+                    font-size: 3.1rem;
+                    line-height: 4rem;
+                    color: $tt-heading
+                }
+            }
+
+            .input-wrapper + .input-wrapper{
+                margin-top: 1.6rem;
+            }
+
+            label{
+                display: block;
+                font-size: 1.4rem;
+                line-height: 1.8rem;
+                color: $tt-label;
+                margin-bottom: 0.8rem;
+            }
+
+            input{
+                width: 100%;
+                border: 1px solid $bd-input;
+                padding: 1.6rem;
+                background: $bg-input;
+                border-radius: .4rem;
+
+                &:focus{
+                    outline: 2px solid $ot-input
+                }
+    
+                &::placeholder{
+                    color: $tt-placeholder;
+                }
+                                                
+            }
+
+      
+        
+
+            button{
+                margin-top: 3.2rem;
+                padding: 1.6rem; 
+                width: 100%;
+
+                border-radius: .4rem;
+                border: none;
+                
+                background: $bg-button;
+                color: $tt-button;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .8rem;
+
+                font-weight: bold;
+    
+                cursor: pointer;
+                transition: $background 0.3s;  
+                
+                &:hover{
+                background: $bg-button-hover;
+            }
+            
+            }
+
+        }
+    }
+}
+
+/*========MODAl==========*/
+
+.modal-wrapper.open{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.modal-wrapper{
+    position: absolute;
+    inset: 0; // fez a mesma coisa que abaixo tudo 0.
+    // top: 0;
+    // bottom: 0;
+    // right: 0;
+    // left: 0;
+    background: rgba(0, 0, 0, 0.70);
+    display: grid;
+    place-content: center;
+    opacity: 0;
+    visibility: hidden;
+
+    .modal{
+        position: relative;
+        @include card-modal();        
+        button{
+            background: transparent;
+            border: none;
+            position: absolute;
+            top: 1.6rem;
+            right: 1.6rem;
+            cursor: pointer;
+            transform: transform .3s;
+        }
+
+        button:hover{
+            transform: scale(1.1);
+        }
+    }
+   
+}
+
+
+
+
+
+
